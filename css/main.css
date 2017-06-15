@@ -1,4 +1,36 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "Flexo", sans-serif;
+}
+
 .az {
 	background-color: #7aa44a;
+	color: white;
+	width: 4%;
+	margin-top: 30px;
+}
 
+.title{
+	color: #e84848;
+	font-size: 50px;
+	margin-top: 30px;	
+}
+
+
+
+
+#trapecio {
+  width: 189px;
+  height: 0;
+  border-right: 40px solid transparent;
+  border-left: 40px solid transparent;
+  border-bottom: 60px solid red;
+}
+
+
+#trapecio img{
+	width: 10%;
+	height: 10%;
 }
