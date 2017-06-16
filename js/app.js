@@ -4,7 +4,7 @@ const render = (root) => {
   root.empty();
   const wrapper = $('<div class="wrapper"></div>');
   wrapper.append(Header());
-  wrapper.append(AllPokemons());
+  wrapper.append(Search());
   root.append(wrapper);
 }
 
