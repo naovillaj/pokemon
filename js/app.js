@@ -23,7 +23,7 @@ $( _ => {
     state.pokemons = json;
     console.log(state.pokemons);
     console.log(state.pokemons.pokemon_entries[0].entry_number);
-	console.log(state.pokemons.pokemon_entries[0].pokemon_species.name);
+	  console.log(state.pokemons.pokemon_entries[0].pokemon_species.name);
     const root = $('#root');
     render(root);
   });

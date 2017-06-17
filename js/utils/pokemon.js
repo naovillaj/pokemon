@@ -6,7 +6,3 @@ const filterByPokemon = (stations,query) => {
   });
 }
 
-
-
-// return pokemons.pokemon_entries.filter((pokemon)=>{
-//     return pokemon.pokemon_species.name.toLowerCase().indexOf(name.toLowerCase())!= -1;

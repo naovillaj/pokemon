@@ -18,19 +18,34 @@
 	margin-top: 30px;	
 }
 
+.divPokemon{
+	width: 150px;
+	height: 180px;
+	margin: 20px;
+	padding-top: 20px;
+	background-color: #dbdbdb;
+}
 
+.divPokemon img{
+	width: 80%;
+	height: 80%;
+}
 
-
-#trapecio {
+.trapecio {
   width: 189px;
   height: 0;
   border-right: 40px solid transparent;
   border-left: 40px solid transparent;
-  border-bottom: 60px solid red;
+  border-bottom: 80px solid white;
 }
 
 
-#trapecio img{
+.trapecio img{
 	width: 10%;
-	height: 10%;
+	height: 10px;
+}
+
+.trapecio p{
+	color: #ba5e49;
+	font-weight: bold;
 }

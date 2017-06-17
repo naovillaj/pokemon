@@ -1,51 +1,40 @@
 "use strict";
 
-const PokemonItem = (x) => {
-	console.log(x);
-  const pokemonContainer = $("<div class='container'></div>");
-  const pokemonRow = $("<div class='row'></div>");
 
 
-  state.pokemons.pokemon_entries.forEach((station) =>{
-  	const pokemonS2 = $("<div class='col s2 center-align'></div>");
-  	const pokemon = $("<img src='http://serebii.net/art/th/"+ x + ".png' alt='pokemon'>");
-  	const pokemonName = $("<div id='trapecio'><img src='assets/icon/pokeball_gray.png alt='pokeball'><img src='assets/icon/valentines-heart.png alt='heart'><img src='assets/icon/cross-out.png alt='cross'><span id='pokemonName'>" + state.pokemons.pokemon_entries[x].pokemon_species.name + "</span></div>");
+const PokemonItem = (station, update) => {
+  console.log(station);
+ 
+	// const pokemonContainer = $("<div class='container'></div>");
+  // const pokemonRow = $("<div class='row'></div>");      
+	const pokemonS2 = $("<div class='divPokemon col s2 center-align'></div>");
+	const pokemon = $("<img src='http://serebii.net/art/th/"+ station.entry_number + ".png' alt='pokemon'>");
+	const pokemonName = $("<div class='trapecio'><img src='assets/icon/pokeball_gray.png' alt='pokeball'><img src='assets/icon/valentines-heart.png' alt='heart'><img src='assets/icon/data.png' alt='cross'><p id='pokemonName'>" + station.pokemon_species.name + "</p></div>");
+  console.log(pokemon);
+	pokemonS2.append(pokemon);
+	pokemonS2.append(pokemonName);
+  // pokemonRow.append(pokemonS2);
+  // pokemonContainer.append(pokemonRow);
 
-  	pokemonS2.append(pokemon);
-  	pokemonS2.append(pokemonName);
-
-
-  });
-
-  pokemonRow.append(pokemonS2);
-  pokemonContainer.append(pokemonRow);
-
-// 	maplink.on('click',(e) => {
-// 	e.preventDefault();
-// 	state.selectedStation = props.station;
-// 	props.update();
-// });
-
-  return pokemonContainer;
+  return pokemonS2;
 }
 
-// console.log(state.pokemons.pokemon_entries[0].entry_number);
-// console.log(state.pokemons.pokemon_entries[0].pokemon_species.name);
-
-const reRender = (container,filteredPokemons,update) => {
+const reRender = (container,filterPokemons,update) => { 
   container.empty();
-  filteredPokemons.forEach((pokemon) => {
-    const pokemonItem = PokemonItem({
-      pokemon: pokemon,
-      update:  update
+  const filteredPokemons = filterByPokemon(state.pokemons, filterPokemons);
+  if(filteredPokemons.length > 0){
+    console.log(filteredPokemons);
+    $.each(filteredPokemons, (index,station) =>{
+      container.append(PokemonItem(station, update));
     });
-    container.append(pokemonItem);
-  });
-}
-
-
+  } else {
+    container.append($('<p>Pokemon no encontrado</p>'));
+  }
+}  
 
 const Search = (update) =>{
+  const pokemonContainer = $("<div class='container'></div>");
+  const pokemonRow = $("<div class='row'></div>");  
 	const parent = $("<div class='row'></div>");
 	const az = $("<div class='az col s1 offset-s3 center-align'>A-Z</div>");
 	const search = $("<div class='input-field col s7'></div>")
@@ -53,15 +42,21 @@ const Search = (update) =>{
 	const input = $("<input id='search' class='search' type='text'><label for='search'>Pokémon</label>");
 	const pokemons = $('<div class="pokemons"></div>');
 
+  pokemonContainer.append(parent);
+  pokemonContainer.append(pokemonRow);
+  parent.append(search);
+  parent.append(az);
+  pokemonRow.append(pokemons);
+  search.append(icon);
+  search.append(input);
 
 	input.on('keyup', (e) => {
-	    const filteredPokemons = filterByPokemon(state.pokemons,$(e.target).val());
-	    reRender(pokemons,filteredPokemons,update);
+	    const filterPokemons = input.val();
+	    reRender(pokemons,filterPokemons,update);
   	});
 
-	parent.append(search);
-	parent.append(az);
-  parent.append(pokemons);
-	search.append(icon);
-  search.append(input);
+  reRender(pokemons,"",update);
+  console.log(pokemons);
+
+  return pokemonContainer;
 }
