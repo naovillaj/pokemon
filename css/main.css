@@ -15,7 +15,7 @@
 .title{
 	color: #e84848;
 	font-size: 50px;
-	margin-top: 30px;	
+	margin-top: 30px;
 }
 
 .divPokemon{
@@ -41,8 +41,9 @@
 
 
 .trapecio img{
-	width: 10%;
-	height: 10px;
+	width: 20%;
+	height: 20px;
+	padding-right: 5px;
 }
 
 .trapecio p{
